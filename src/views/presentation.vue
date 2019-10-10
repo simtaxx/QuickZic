@@ -18,14 +18,6 @@
 <script>
 export default {
   name: "presentation",
-  methods: {
-    runGame() {
-      console.log("lourd");
-    }
-  },
-  mounted() {
-    runGame();
-  }
 };
 </script>
 
