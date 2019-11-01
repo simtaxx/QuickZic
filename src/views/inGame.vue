@@ -3,8 +3,8 @@
     <div class="columns">
       <div class="column is-two-fifths">
         <figure>
-          <h2 class="is-size-2">{{ musicData.artist}}</h2>
-          <img :src="musicData.cover" alt="">
+          <h2 class="is-size-2">{{ musicData.artist.name }}</h2>
+          <img :src="musicData.cover_big" alt="">
         </figure>
       </div>
       <div class="informations column is-two-fifths">
@@ -33,12 +33,7 @@ export default {
   name: "inGame",
   data() {
     return {
-      musicData: {
-        cover: "",
-        songs: [],
-        artist: "",
-        preview: "",
-      },
+      musicData: {},
       indexMusic: 0,
       userScore: 0,
       time: 60,
@@ -48,10 +43,7 @@ export default {
   mixins: [axios_call],
   async mounted() {
     await this.axios_get();
-    this.musicData.cover = this.axios_response.data.cover_big
-    this.musicData.songs = this.axios_response.data.tracks.data
-    this.musicData.artist = this.axios_response.data.artist.name
-    this.musicData.preview = this.musicData.songs[this.indexMusic].preview
+    this.musicData = this.axios_response.data
     if(this.time !== 0) {
       this.setTimer()
     }
@@ -74,7 +66,6 @@ export default {
       this.time --
       if(this.time === 0){
         this.gameOver()
-        console.log("lourd")
       } else {
         setTimeout(this.setTimer, 1000);
       }
@@ -93,7 +84,7 @@ export default {
       if(this.time <= 0) {
         stop()
       } else {
-        this.musicData.preview = this.musicData.songs[this.indexMusic].preview
+        this.musicData.preview = this.musicData.tracks.data[this.indexMusic].preview
         return this.musicData.preview
       }
     }
