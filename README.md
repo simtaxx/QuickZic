@@ -1,2 +1,2 @@
 # QuickZic
-musical blind test working whith vue.js
+musical blind test working with vue.js
