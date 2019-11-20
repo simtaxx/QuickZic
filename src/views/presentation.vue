@@ -1,10 +1,10 @@
 <template>
-  <div class="container">
-    <div class="has-text-centered notification has-background-info">
-      <h2 class="has-text-white is-size-3">Bienvenue dans QuickZic!</h2>
-      <p class="has-text-white is-size-4">Sélectionne un thème pour commencer</p>
+  <div>
+    <div class="infos">
+      <h2>Bienvenue dans QuickZic!</h2>
+      <p>Sélectionne un thème pour commencer</p>
     </div>
-    <div class="has-text-centered">
+    <div class="buttons">
       <Button v-for="(song, index) in songs" :key="index" :theme="song.name" :url="song.url"></Button>
     </div>
   </div>
@@ -18,11 +18,11 @@ export default {
     return {
       songs: [
         {
-          name: 'six',
+          name: '6ix9ine',
           url: 'http://localhost:8080/album/80108302'
         },
         {
-          name: 'pnl',
+          name: 'PNL',
           url: 'http://localhost:8080/album/14038232'
         }
       ]
@@ -33,3 +33,24 @@ export default {
   }
 }
 </script>
+<style lang="scss" scoped>
+  .infos {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 40px;
+    color: white;
+    font-family: 'Roboto', 'sans-serif';
+    font-size: 1.4rem;
+    h2 {
+      margin-bottom: 5px;
+      font-weight: bold;
+    }
+  }
+  .buttons {
+    text-align: center;
+    margin-top: 60px;
+  }
+</style>
