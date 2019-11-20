@@ -4,7 +4,7 @@
       <div class="column is-two-fifths">
         <figure>
           <h2 class="is-size-2">{{ musicData.artist.name }}</h2>
-          <img :src="musicData.cover_big" alt="">
+          <img :src="musicData.cover_big" :alt="musicData.title">
         </figure>
       </div>
       <div class="informations column is-two-fifths">
@@ -19,6 +19,8 @@
         <div class="has-text-centered">
           <h2 class="is-size-2">Score</h2>
           <h2 class="is-size-2">{{ userScore }}</h2>
+          <h2 class="is-size-2">Meilleur Score</h2>
+          <h2 class="is-size-2">{{ bestScore }}</h2>
         </div>
         <audio autoplay :src="currentSong" ref="mediaAudio"></audio>
       </div>
@@ -36,19 +38,23 @@ export default {
       musicData: {},
       indexMusic: 0,
       userScore: 0,
-      time: 60,
+      bestScore: 0,
+      time: 5,
       userResponse: '',
       url: ''
     };
   },
   mixins: [axiosCall],
   async mounted() {
+    this.bestScore = parseInt(localStorage.getItem("bestScore"))
     this.url = this.$route.params.url
     await this.axiosGet(this.url);
     this.musicData = this.axiosResponse.data
     console.log(this.musicData)
-    if(this.time !== 0) {
-      this.setTimer()
+    if(this.time > 0) {
+      setTimeout(() => {
+        this.setTimer()
+      }, 3000);
     }
   },
   methods: {
@@ -75,10 +81,15 @@ export default {
     },
     gameOver() {
       this.$refs.mediaAudio.pause()
+      this.indexMusic = 0
+      if (this.userScore > this.bestScore) {
+        localStorage.setItem("bestScore", this.userScore)
+        this.bestScore = parseInt(localStorage.getItem("bestScore"))
+      }
     },
     reset() {
       this.userScore = 0
-      this.time = 4
+      this.time = 5
       this.setTimer()
     }
   },
