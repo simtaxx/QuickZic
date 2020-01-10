@@ -12,7 +12,8 @@
           <h2 class="is-size-2">Temps Restant</h2>
           <h2 class="is-size-2">{{ time }}</h2>
         </div>
-        <input v-if="time > 0" class="input" v-model="userResponse" @keyup.enter="checkAnwser(userResponse)" type="text" autofocus>
+        <button v-if="!startState" class="button" @click="start">Commencer</button>
+        <input v-if="startState && time > 0" class="input" v-model="userResponse" @keyup.enter="checkAnwser(userResponse)" type="text" autofocus>
         <button v-if="time <= 0" class="button" @click="reset">Rejouer</button>
       </div>
       <div class="informations column">
@@ -39,7 +40,8 @@ export default {
       indexMusic: 0,
       userScore: 0,
       bestScore: 0,
-      time: 60,
+      time: 6,
+      startState: false,
       userResponse: '',
       url: ''
     };
@@ -53,13 +55,23 @@ export default {
     await this.axiosGet(this.url);
     this.musicData = this.axiosResponse.data
     console.log(this.musicData)
-    if(this.time > 0) {
-      setTimeout(() => {
-        this.setTimer()
-      }, 3000);
+    for (let song = 0; song < this.musicData.tracks.data.length; song++) {
+      let random = Math.floor(Math.random() * (song + 1))
+      let change = this.musicData.tracks.data[song]
+      this.musicData.tracks.data[song] = this.musicData.tracks.data[random]
+      this.musicData.tracks.data[random] = change
     }
+    console.log(this.musicData)
   },
   methods: {
+    start() {
+      this.startState = true
+      if(this.time > 0) {
+        setTimeout(() => {
+          this.setTimer()
+        }, 1000);
+      }
+    },
     nextMusic() {
       return this.indexMusic ++
     },
@@ -91,15 +103,16 @@ export default {
     },
     reset() {
       this.userScore = 0
-      this.time = 60
+      this.time = 6
       this.setTimer()
+      this.startState = true
     }
   },
   computed: {
     currentSong() {
       if(this.time <= 0) {
         stop()
-      } else {
+      } else if (this.startState) {
         this.musicData.preview = this.musicData.tracks.data[this.indexMusic].preview
         return this.musicData.preview
       }
