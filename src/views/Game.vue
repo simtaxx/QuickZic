@@ -46,7 +46,10 @@ export default {
   },
   mixins: [axiosCall],
   async mounted() {
-    this.bestScore = parseInt(localStorage.getItem("bestScore"))
+    if (localStorage.getItem("bestScore"))
+    {
+      this.bestScore = parseInt(localStorage.getItem("bestScore"))
+    }
     this.url = this.$route.params.url
     await this.axiosGet(this.url);
     this.musicData = this.axiosResponse.data
