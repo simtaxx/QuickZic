@@ -21,7 +21,7 @@ export default {
 </script>
 <style lang="scss" scoped>
   input {
-    width: 300px;
+    width: 350px;
     height: 60px;
     font-size: 2rem;
     border: none;
@@ -33,6 +33,6 @@ export default {
   input:hover {
     box-shadow: 0px 7px 5px rgba(0, 0, 0, 0.557);
     transform: scale(1.02);
-    transition: 0.4s;
+    transition: 0.2s;
   }
 </style>
