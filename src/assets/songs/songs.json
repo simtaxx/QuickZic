@@ -1,10 +1,10 @@
 [
   {
     "name": "Top Rap Hip / Hop",
-    "url": "http://localhost:8080/playlist/1653561181"
+    "url": "https://cors-anywhere.herokuapp.com/https://api.deezer.com/playlist/1653561181"
   },
   {
-    "name": "Rap RnB US 90/2000",
-    "url": "http://localhost:8080/playlist/1222545261"
+    "name": "Rap RnB US 90 / 2000",
+    "url": "https://cors-anywhere.herokuapp.com/https://api.deezer.com/playlist/1222545261"
   }
 ]
