@@ -40,7 +40,7 @@ export default {
       indexMusic: 0,
       userScore: 0,
       bestScore: 0,
-      time: 6,
+      time: 80,
       startState: false,
       userResponse: '',
       url: ''
@@ -103,7 +103,7 @@ export default {
     },
     reset() {
       this.userScore = 0
-      this.time = 6
+      this.time = 80
       this.setTimer()
       this.startState = true
     }
