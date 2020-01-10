@@ -39,7 +39,7 @@ export default {
       indexMusic: 0,
       userScore: 0,
       bestScore: 0,
-      time: 5,
+      time: 60,
       userResponse: '',
       url: ''
     };
@@ -91,7 +91,7 @@ export default {
     },
     reset() {
       this.userScore = 0
-      this.time = 5
+      this.time = 60
       this.setTimer()
     }
   },
