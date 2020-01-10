@@ -12,20 +12,12 @@
 
 <script>
 import Button from '../components/Button'
+import Songs from '../assets/songs/songs.json'
 export default {
   name: 'Presentation',
   data() {
     return {
-      songs: [
-        {
-          name: '6ix9ine',
-          url: 'http://localhost:8080/album/80108302'
-        },
-        {
-          name: 'PNL',
-          url: 'http://localhost:8080/album/14038232'
-        }
-      ]
+      songs: Songs
     } 
   },
   components: {
