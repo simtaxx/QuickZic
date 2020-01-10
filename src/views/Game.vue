@@ -4,7 +4,7 @@
       <div class="column is-two-fifths">
         <figure>
           <h2 class="is-size-2">{{ musicData.title }}</h2>
-          <img :src="musicData.picture_big" :alt="musicData.title">
+          <img :src="musicData.tracks.data[indexMusic].album.cover_big" :alt="musicData.tracks.data[indexMusic].album.cover_big">
         </figure>
       </div>
       <div class="informations column is-two-fifths">
@@ -54,13 +54,7 @@ export default {
     this.url = this.$route.params.url
     await this.axiosGet(this.url);
     this.musicData = this.axiosResponse.data
-    console.log(this.musicData)
-    for (let song = 0; song < this.musicData.tracks.data.length; song++) {
-      let random = Math.floor(Math.random() * (song + 1))
-      let change = this.musicData.tracks.data[song]
-      this.musicData.tracks.data[song] = this.musicData.tracks.data[random]
-      this.musicData.tracks.data[random] = change
-    }
+    this.randomize(this.musicData.tracks.data)
     console.log(this.musicData)
   },
   methods: {
@@ -74,6 +68,14 @@ export default {
     },
     nextMusic() {
       return this.indexMusic ++
+    },
+    randomize(songs) {
+      for (let song = 0; song < songs.length; song++) {
+        let random = Math.floor(Math.random() * (song + 1))
+        let change = songs[song]
+        songs[song] = songs[random]
+        songs[random] = change
+      }
     },
     checkAnwser(e) {
       if (e === this.musicData.tracks.data[this.indexMusic].title.toLowerCase()) {
@@ -96,6 +98,7 @@ export default {
     gameOver() {
       this.$refs.mediaAudio.pause()
       this.indexMusic = 0
+      this.randomize(this.musicData.tracks.data)
       if (this.userScore > this.bestScore) {
         localStorage.setItem("bestScore", this.userScore)
         this.bestScore = parseInt(localStorage.getItem("bestScore"))
