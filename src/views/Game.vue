@@ -1,10 +1,10 @@
 <template>
-  <div v-if="musicData.cover" class="container">
+  <div v-if="musicData.picture" class="container">
     <div class="columns">
       <div class="column is-two-fifths">
         <figure>
-          <h2 class="is-size-2">{{ musicData.artist.name }}</h2>
-          <img :src="musicData.cover_big" :alt="musicData.title">
+          <h2 class="is-size-2">{{ musicData.title }}</h2>
+          <img :src="musicData.picture_big" :alt="musicData.title">
         </figure>
       </div>
       <div class="informations column is-two-fifths">
@@ -46,9 +46,8 @@ export default {
   },
   mixins: [axiosCall],
   async mounted() {
-    if (localStorage.getItem("bestScore"))
-    {
-      this.bestScore = parseInt(localStorage.getItem("bestScore"))
+    if (localStorage.getItem("bestScore")) { 
+      this.bestScore = parseInt(localStorage.getItem("bestScore")) 
     }
     this.url = this.$route.params.url
     await this.axiosGet(this.url);
