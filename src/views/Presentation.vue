@@ -5,7 +5,7 @@
       <p>Sélectionne un thème pour commencer</p>
     </div>
     <div class="buttons">
-      <Button v-for="(song, index) in songs" :key="index" :theme="song.name" :url="song.url"></Button>
+      <Button v-for="(song, index) in songs" :key="index" :theme="song.name" :url="song.url" :cover="song.cover"></Button>
     </div>
   </div>
 </template>
