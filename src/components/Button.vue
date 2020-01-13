@@ -1,6 +1,9 @@
 <template>
   <div class="container">
-    <input type="button" :value="theme" @click="nextPage(url)">
+    <div class="button" @click="nextPage(url)">
+      <p>{{ theme }}</p>
+      <img :src="cover" alt="cover">
+    </div>
   </div>
 </template>
 
@@ -9,7 +12,8 @@ export default {
   name: 'Button',
   props: {
     theme: String,
-    url: String
+    url: String,
+    cover: String
   },
   methods: {
     nextPage(urlChosen) {
@@ -20,9 +24,16 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
-  input {
-    width: 350px;
-    height: 60px;
+  .container {
+    display: flex;
+    justify-content: space-around;
+  }
+  .button {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    height: 400px;
+    margin: 0 100px;
     font-size: 2rem;
     border: none;
     border-radius: 30px;
@@ -30,7 +41,7 @@ export default {
     cursor: pointer;
     transition: 0.4s;
   }
-  input:hover {
+  .button:hover {
     box-shadow: 0px 7px 5px rgba(0, 0, 0, 0.557);
     transform: scale(1.02);
     transition: 0.2s;
