@@ -1,10 +1,37 @@
 [
   {
     "name": "Top Rap Hip / Hop",
-    "url": "https://cors-anywhere.herokuapp.com/https://api.deezer.com/playlist/1653561181"
+    "url": "https://cors-anywhere.herokuapp.com/https://api.deezer.com/playlist/1653561181",
+    "cover": "https://cdns-images.dzcdn.net/images/playlist/5dbc936923842b3f238304e4ca633908/250x250-000000-80-0-0.jpg"
   },
   {
     "name": "Rap RnB US 90 / 2000",
-    "url": "https://cors-anywhere.herokuapp.com/https://api.deezer.com/playlist/1222545261"
+    "url": "https://cors-anywhere.herokuapp.com/https://api.deezer.com/playlist/1222545261",
+    "cover": "https://cdns-images.dzcdn.net/images/cover/2d6c84dea96a4561f432105768c48009-4290a71c166ff0cce644eb0ee6be3b5f-a3939a5b62df412e83d898dfd85035c9-6c2086890b61d3299c3073efe4412ebf/250x250-000000-80-0-0.jpg"
+  },
+  {
+    "name": "Top Dance",
+    "url": "https://cors-anywhere.herokuapp.com/https://api.deezer.com/playlist/1653561201",
+    "cover": "https://cdns-images.dzcdn.net/images/playlist/3c82fae42cdc7f69947e0b46054a0681/250x250-000000-80-0-0.jpg"
+  },
+  {
+    "name": "Top Pop Rock",
+    "url": "https://cors-anywhere.herokuapp.com/https://api.deezer.com/playlist/1370794195",
+    "cover": "https://cdns-images.dzcdn.net/images/playlist/c626617400d830236cd45d568884e062/250x250-000000-80-0-0.jpg"
+  },
+  {
+    "name": "Top 100 France",
+    "url": "https://cors-anywhere.herokuapp.com/https://api.deezer.com/playlist/1109890291",
+    "cover": "https://cdns-images.dzcdn.net/images/playlist/b40301f3a462bcad6cc2e75937be05be/250x250-000000-80-0-0.jpg"
+  },
+  {
+    "name": "Top Worldwide",
+    "url": "https://cors-anywhere.herokuapp.com/https://api.deezer.com/playlist/3155776842",
+    "cover": "https://cdns-images.dzcdn.net/images/playlist/f1ac18441ab1dabc94282e4d1d5f4955/250x250-000000-80-0-0.jpg"
+  },
+  {
+    "name": "Les Hits Des Kids",
+    "url": "https://cors-anywhere.herokuapp.com/https://api.deezer.com/playlist/2134531422",
+    "cover": "https://e-cdns-images.dzcdn.net/images/playlist/5c107785438f2389b671b5f08b9f5d82/250x250-000000-80-0-0.jpg"
   }
 ]
