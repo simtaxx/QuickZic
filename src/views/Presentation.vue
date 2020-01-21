@@ -1,8 +1,8 @@
 <template>
   <div>
-    <div class="infos">
-      <h2>Bienvenue dans QuickZic!</h2>
-      <p>Sélectionne un thème pour commencer</p>
+    <div class="introduction-text">
+      <h2 class="title">Bienvenue dans QuickZic!</h2>
+      <p class="subtitle">Choisissez votre thème</p>
     </div>
     <div class="buttons">
       <Button v-for="(song, index) in songs" :key="index" :theme="song.name" :url="song.url" :cover="song.cover"></Button>
@@ -26,23 +26,25 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
-  .infos {
+  .introduction-text {
+    text-align: center;
     width: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    margin-top: 40px;
-    color: white;
-    font-family: 'Roboto', 'sans-serif';
-    font-size: 1.4rem;
-    h2 {
-      margin-bottom: 5px;
-      font-weight: bold;
-    }
+  }
+
+  .title {
+    font-size: 36px;
+    margin-bottom: 20px;
+  }
+
+  .subtitle {
+    font-size: 24px;
+    font-weight: lighter;
+    color: rgba(255, 249, 249, 0.39);
   }
   .buttons {
-    text-align: center;
-    margin-top: 60px;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin: 0 250px;
   }
 </style>

@@ -1,29 +1,22 @@
 <template>
-  <div v-if="musicData.picture" class="container">
-    <div class="columns">
-      <div class="column is-two-fifths">
-        <figure>
-          <h2 class="is-size-2">{{ musicData.title }}</h2>
-          <img :src="musicData.tracks.data[indexMusic].album.cover_big" :alt="musicData.tracks.data[indexMusic].album.cover_big">
-        </figure>
-      </div>
-      <div class="informations column is-two-fifths">
-        <div class="has-text-centered">
-          <h2 class="is-size-2">Temps Restant</h2>
-          <h2 class="is-size-2">{{ time }}</h2>
+  <div class="game" v-if="musicData.picture">
+    <div class="game__container">
+      <img class="game__img" :src="musicData.tracks.data[indexMusic].album.cover_xl" :alt="musicData.tracks.data[indexMusic].album.cover_big">
+      <div class="game__hud-1">
+        <div class="game__hud__timer">
+          <h2>Temps Restant</h2>
+          <h2>{{ time }}</h2>
         </div>
-        <button v-if="!startState" class="button" @click="start">Commencer</button>
-        <input v-if="startState && time > 0" class="input" v-model="userResponse" @keyup.enter="checkAnwser(userResponse)" type="text" autofocus>
-        <button v-if="time <= 0" class="button" @click="reset">Rejouer</button>
-      </div>
-      <div class="informations column">
-        <div class="has-text-centered">
-          <h2 class="is-size-2">Score</h2>
-          <h2 class="is-size-2">{{ userScore }}</h2>
-          <h2 class="is-size-2">Meilleur Score</h2>
-          <h2 class="is-size-2">{{ bestScore }}</h2>
+        <div class="game__hud__scores">
+          <h2>Score</h2>
+          <h2>{{ userScore }}</h2>
+          <h2>Meilleur Score</h2>
+          <h2>{{ bestScore }}</h2>
         </div>
-        <audio autoplay :src="currentSong" ref="mediaAudio"></audio>
+        <button class="game__hud--button" v-if="!startState" @click="start">Commencer</button>
+        <input class="game__hud--input" v-if="startState && time > 0" v-model="userResponse" @keyup.enter="checkAnwser(userResponse)" type="text" autofocus>
+        <button class="game__hud--button" v-if="time <= 0" @click="reset">Rejouer</button>
+        <audio class="game__media-player" autoplay :src="currentSong" ref="mediaAudio"></audio>
       </div>
     </div>
   </div>
@@ -125,15 +118,19 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-  .informations {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    input {
-      margin-bottom: 200px;
+  .game {
+    &__img {
+      float: left;
+      height: 100vh;
+      max-width: 40%;
     }
-  }
-  button {
-    margin-bottom: 200px;
+
+    &__hud-1 {
+    position: absolute;
+    top: 200px;
+    left: 70%;
+    transform: translateX(-70%);
+    text-align: center;
+    }
   }
 </style>
