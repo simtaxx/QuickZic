@@ -106,7 +106,7 @@ export default {
   computed: {
     currentSong() {
       if(this.time <= 0) {
-        stop()
+        return stop()
       } else if (this.startState) {
         this.musicData.preview = this.musicData.tracks.data[this.indexMusic].preview
         return this.musicData.preview
