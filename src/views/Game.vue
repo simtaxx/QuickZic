@@ -48,7 +48,6 @@ export default {
     await this.axiosGet(this.url);
     this.musicData = this.axiosResponse.data
     this.randomize(this.musicData.tracks.data)
-    console.log(this.musicData)
   },
   methods: {
     start() {
